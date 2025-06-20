@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: traffic-management
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn traffic_control:app"
