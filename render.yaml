@@ -1,7 +1,12 @@
 services:
   - type: web
-    name: traffic-management
+    name: traffic-management-system
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn traffic_control:app"
+    buildCommand: |
+      pip install --upgrade pip setuptools wheel
+      pip install -r requirements.txt
+    startCommand: gunicorn traffic_control:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
